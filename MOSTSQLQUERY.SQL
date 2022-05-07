@@ -9,7 +9,7 @@
     SELECT * FROM EMPLOYEES
     WHERE SALARY >= 50000 AND SALARY <=100000;
     
---Query 3 : List the Employees whose name starts with ‘Ami’.
+--Query 3 : List the Employees whose name starts with â€˜Amiâ€™.
     SELECT * FROM EMPLOYEES
     WHERE FIRST_NAME LIKE 'Ami%';
  
@@ -126,6 +126,14 @@
     where NOT REGEXP_LIKE(Email, '[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}', 'i');    
     
 --Query 22 : How to remove duplicate rows from Employees table.
+
+--DISPLAY DUPLICATES RECORDS
+    SELECT * FROM EMPLOYEES
+    WHERE ROWID NOT IN
+     (SELECT MAX(ROWID)FROM EMPLOYEES
+    GROUP BY EMPLOYEE_ID);
+    
+ --REMOVE / DELETE DUPLICATES RECORDS   
     DELETE FROM DATADB
     WHERE ROWID NOT IN
     (SELECT MAX(ROWID)FROM EMPLOYEES
